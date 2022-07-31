@@ -22,6 +22,21 @@ let stockRopa = [
     {id: 'item20', tipo: 'buzo', articulo: 'Buzo Negro', precio: 4500, img: '../assets/img/buzos/buzo10.jpg'}
 ] 
 
+let btnFiltroRemera = document.getElementById('filtroRemeras').checked
+if(btnFiltroRemera == true){
+    stockRopa.filter(producto => producto.tipo == remera)
+}else{
+    console.log('no filtar')
+}
+
+let btnFiltroBuzos = document.getElementById('filtroBuzos').checked
+if(btnFiltroBuzos == true){
+    stockRopa.filter(producto => producto.tipo === buzo)
+}else{
+    console.log('no filtar')
+}
+
+
 const contenedorRopa = document.querySelector('.contRem')
 
 stockRopa.forEach((producto) => {
@@ -36,6 +51,9 @@ stockRopa.forEach((producto) => {
     </div>
     `
     contenedorRopa.appendChild(div)
+
+    
+
     const boton = div.getElementsByClassName('add-to-cart')[0]
     
     boton.addEventListener('click', ()=>{
@@ -66,11 +84,7 @@ const seleccionarArticulos = (prod) => {
 <input type="radio" name="tipo" id="filtroBuzos"><label for="filtroBuzos" class="labelRemeras">Buzos</label>
 <input type="radio" name="tipo" id="filtroTodo"><label for="filtroTodo">No Filtrar</label> */
 
-let btnFiltroRemera = document.getElementById('filtroRemeras').value
-console.log(btnFiltroRemera)
-let btnFiltroBuzos = document.getElementById('filtroBuzos').value
-console.log(btnFiltroBuzos)
-let btnFiltroTodo = document.getElementById('filtroTodo').value
+
 
 // btnFiltroBuzos.addEventListener('click', ()=>{
 //     contenedorRopa.filter( producto => )
