@@ -378,10 +378,6 @@ main{
             position: absolute;
             right: 40px;
             margin-top: 20px;
-            // .precioTotal{
-            //     display: flex;
-            //     align-items: center;
-            // }
         }
         .precioTotal{
             font-weight: bold;
@@ -410,7 +406,7 @@ main{
 
             // }
             .remove-btn{
-                padding: 5px;
+                padding: 5px 8px 5px 8px;
                 background-color: black;
                 color: white;
                 outline: none;
@@ -422,7 +418,17 @@ main{
             }
         }
     }
-    
+    .pagar{
+        padding: 5px 8px 5px 8px;
+        background-color: black;
+        color: white;
+        outline: none;
+        border: solid 0px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bolder;
+        font-size: 1rem;
+    }
 }
 
 @media all and (min-width: 700px){

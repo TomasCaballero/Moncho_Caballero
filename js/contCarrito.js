@@ -1,10 +1,3 @@
-/* <div>
-    <img src="../assets/img/remeras/remera2.jpg" alt="">
-    <span id="nombre">remera2</span>
-    <div id="precio">$1500</div>
-    <button id="remove-btn">Eliminar</button>
-</div> */
-
 let elementosCarritos = JSON.parse(localStorage.getItem('listaArticulosSeleccionados'))
 
 
@@ -16,18 +9,38 @@ const mostrarProductos = () =>{
         const div = document.createElement('div')
         div.classList.add('divCarrito')
         div.innerHTML = `
-        <img src="${producto.img}" alt="${producto.id}">
-        <span id="nombre">${producto.articulo}</span>
-        <div id="precio">$${producto.precio}</div>
-        <button class="remove-btn">Eliminar</button>
+        <tr>
+            <td><img src="${producto.img}" alt="${producto.id}"></td>
+            <td><span id="nombre">${producto.articulo}</span></td>
+            <td><div id="precio">$${producto.precio}</div></td>
+            <td><button class="remove-btn">X</button></td>
+        </tr>
         `
+
+
+
+
+        // div.innerHTML = `
+        // <img src="${producto.img}" alt="${producto.id}">
+        // <span id="nombre">${producto.articulo}</span>
+        // <div id="precio">$${producto.precio}</div>
+        // <button class="remove-btn">Eliminar</button>
+        // `
         carritoOk.appendChild(div)
     
     
     
         const boton = div.getElementsByClassName('remove-btn')[0]
         boton.addEventListener('click', (e) => {
-            eliminarPorducto(producto)
+            Toastify({
+                text: "Se elimino el producto",
+                className: "info",
+                style: {
+                    background: 'rgb(0,0,0);',
+                    background: 'linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(137,105,51,0.7170576848903624) 54%, rgba(105,41,0,1) 100%)'
+                }
+            }).showToast();
+            eliminarProducto(producto)
             borrarDeLaVista(e)
             actualizarPrecio()
         })
@@ -45,8 +58,7 @@ if(elementosCarritos == null || elementosCarritos.length == 0){
 }
 
 
-
-const eliminarPorducto = (prod) => {
+const eliminarProducto = (prod) => {
     let index = elementosCarritos.indexOf(prod)
     elementosCarritos.splice(index,1)
 
@@ -79,7 +91,16 @@ actualizarPrecio()
 
 
 
-
+//Boton Pagar
+let btnPagar = document.querySelector('.pagar')
+btnPagar.addEventListener('click', ()=>{
+    Swal.fire({
+        icon: 'error',
+        title: 'No se pudo realizar la compra',
+        text: '¡Vuelva a intentarlo luego!',
+        confirmButtonColor: '#261514',
+      })
+})
 
 
 
