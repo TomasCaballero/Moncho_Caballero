@@ -24,28 +24,36 @@ let stockRopa = [
 
 const contenedorRopa = document.querySelector('.contRem')
 
-stockRopa.forEach((producto) => {
-    const div = document.createElement('div')
-    div.classList.add('cardRem')
-    div.innerHTML = `
-    <div class="card-1 card ${producto.tipo}" id="${producto.id}">
-        <img class="imgRem" src="${producto.img}" alt="${producto.articulo}">
-        <h3>${producto.articulo}</h3>
-        <span class="product-price">$${producto.precio}</span>
-        <button class="add-to-cart" id="agregar-${producto.id}">Agregar al Carrito</button>
-    </div>
-    `
-    contenedorRopa.appendChild(div)
-
+const cargarProductos = (productos) => {
+    //vacio vista
+    while( contenedorRopa.hasChildNodes() ){
+        contenedorRopa.removeChild(contenedorRopa.lastChild);
+    }
+    //cargar vista
+    productos.forEach((producto) => {
+        const div = document.createElement('div')
+        div.classList.add('cardRem')
+        div.innerHTML = `
+        <div class="card-1 card ${producto.tipo}" id="${producto.id}">
+            <img class="imgRem" src="${producto.img}" alt="${producto.articulo}">
+            <h3>${producto.articulo}</h3>
+            <span class="product-price">$${producto.precio}</span>
+            <button class="add-to-cart" id="agregar-${producto.id}">Agregar al Carrito</button>
+        </div>
+        `
+        contenedorRopa.appendChild(div)
     
-
-    const boton = div.getElementsByClassName('add-to-cart')[0]
+        
     
-    boton.addEventListener('click', ()=>{
-        seleccionarArticulos(producto);
+        const boton = div.getElementsByClassName('add-to-cart')[0]
+        
+        boton.addEventListener('click', ()=>{
+            seleccionarArticulos(producto);
+        })
     })
+}
 
-})
+cargarProductos(stockRopa)
 
 //----GUARDAR ARCHIVOS EN STOREGE PARA DESPUES PODER AGREGARLOS AL CARRITO
 
@@ -75,38 +83,19 @@ const seleccionarArticulos = (prod) => {
 //----FILTRAR POR TIPO
 
 
-let btnFiltroRemera = document.getElementById('filtroRemeras').checked
-console.log(btnFiltroRemera)
-let soloRemeras = stockRopa.filter(producto => producto.precio <= 2000);
+let btnFiltroRemera = document.getElementById('filtroRemeras')
+let btnFiltroBuzo = document.getElementById('filtroBuzos')
+let btnTodo = document.getElementById('todo')
 
+btnTodo.addEventListener('click', (e) => {
+    cargarProductos(stockRopa)
+})
 
-// console.log(soloRemeras)
-
-// let btnFiltroRemera = document.getElementById('filtroRemeras').checked
-
-// btnFiltroRemera.addEventListener('click', (producto)=>{
-//     if(btnFiltroRemera.checked == true){
-//         stockRopa.filter(producto => producto.tipo == 'remera')
-//     }else{
-//         console.log('no filtar')
-//     }
-// })
-
-
-
-
-
-// let btnFiltroRemera = document.getElementById('filtroRemeras').checked
-// if(btnFiltroRemera == true){
-//     stockRopa.filter(producto => producto.tipo == remera)
-// }else{
-//     console.log('no filtar')
-// }
-
-// let btnFiltroBuzos = document.getElementById('filtroBuzos').checked
-// if(btnFiltroBuzos == true){
-//     stockRopa.filter(producto => producto.tipo === buzo)
-// }else{
-//     console.log('no filtar')
-// }
-
+btnFiltroRemera.addEventListener('click', filtrarProductos)
+btnFiltroBuzo.addEventListener('click', filtrarProductos)
+function filtrarProductos(e) {
+    if(e.target.checked){
+        let ropaFiltrada = stockRopa.filter(producto => producto.tipo == e.target.value)
+        cargarProductos(ropaFiltrada)
+    }
+}
