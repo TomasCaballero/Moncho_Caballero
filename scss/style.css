@@ -405,6 +405,14 @@ main div p {
   font-weight: bolder;
   font-size: 1rem;
 }
+.mainCarrito .pokemonRegalo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainCarrito .contendorPokemon div .card .card-body .card-text {
+  font-weight: bold;
+}
 
 @media all and (min-width: 700px) {
   .carrito {
