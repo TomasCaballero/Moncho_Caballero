@@ -23,6 +23,7 @@ body{
     display: flex;
     justify-content: center;
     padding-left: 10px;
+    z-index: 4;
     ul{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -77,19 +78,6 @@ body{
                         }
                     }
                 }
-                // #icon-cart{
-                //     ::after{
-                //         content: '';
-                //         width: 17px;
-                //         height: 17px;
-                //         background-color: rgb(255, 255, 255);
-                //         position: absolute;
-                //         left: 10px;
-                //         z-index: 3;
-                //         border: rgb(0, 0, 0) solid 1px;
-                //         border-radius: 50px;
-                //     }
-                // }
                 .text{
                     position: absolute;
                     color: rgba(242, 242, 242, 0.0);
@@ -116,7 +104,6 @@ body{
     height: 5rem;
     width: 100;
     box-shadow: 0px 17px 52px 3px #F2F1F0;
-    margin-bottom: 20px;
     .icono{
         display: flex;
         align-items: center;
@@ -151,31 +138,57 @@ body{
     height: 20rem;
     
 }
-main{
-    color: #0D0D0D;
-    div{
-        h2{
-            display: flex;
-            justify-content: center;
-            padding-left: 10px;
-            padding-top: 20px;
-            padding-right: 10px;
+.mainIndex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #titulo{
+        margin-top: 2rem;
+    }
+    .contenidoIndex{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 2rem;
+        padding-left: 20px;
+        padding-right: 20px;
+        .descripcion{
+            text-align: center;
         }
-        p{
-            padding-left: 10px;
-            padding-right: 10px;
-        }
+    }
+    .imagenesIndex{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .boton{
+        margin-top: 10px;
+        background-color: #0D0D0D;
+        color: #F2F1F0;
+        padding: 10px;
+        border: solid 0px;
+        border-radius: 10px;
+        text-decoration: none;
     }
 }
 
 @media all and (min-width: 700px){
-    main div p{
-        padding-left: 100px;
-        padding-right: 100px;
+    .mainIndex{
+        .contenidoIndex{
+            .descripcion{
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+        } 
     }
+    
 }
 .relleno {
-    height: 80px;
+    height: 100px;
 }
 .tapa {
     background-color: #73513D;
@@ -430,9 +443,11 @@ main{
         font-size: 1rem;
     }
     .pokemonRegalo{
+        margin-top: 2.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
     .contendorPokemon{
         div{
@@ -445,6 +460,11 @@ main{
             }
         }
     }
+}
+.divCarritoVacio{
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 @media all and (min-width: 700px){
@@ -460,8 +480,80 @@ main{
 }
 
 
-
-
+// Main Contacto
+.mainContacto{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    h2{
+        margin-top: 2rem;
+        text-decoration: underline;
+    }
+    .contenedorContactos{
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5rem;
+        .telefonos{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .correo{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+        }
+    }
+    @media all and (max-width: 700px){
+        .contenedorContactos{
+            flex-direction: column;
+        }
+    }
+    h4{
+        margin-top: 5rem;
+    }
+    .contenedorRedes{
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+        .aRedes{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #0D0D0D;
+        }
+    }
+    .ubicacion{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h4{
+            text-align: center;
+        }
+        .mapa{
+            margin-top: 2rem;
+            border: solid 0px;
+            border-radius: 5px;
+        }
+        @media all and (max-width: 700px){
+            .mapa{
+                width: 300px;
+                height: 300px;
+            }
+        }
+    }
+}
+.rellenoContacto{
+    height: 150px;
+}
 
 
 

@@ -136,8 +136,8 @@ const obtenerPokemon = ()=>{
             for(let i = 0; i < 1; i++){
                 const div = document.createElement('div')
                 contenedorPokemon.innerHTML += `
-                <div class="card mt-4" style="width: 18rem;">
-                    <img src="${imgPokemon}" class="card-img-top" alt="...">
+                <div class="card mt-4" style="width: 15rem;">
+                    <img src="${imgPokemon}" class="card-img-top mx-auto" alt="..." style="width: 200px;">
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-center">${nombrePokemon}</h5>
                         <p class="card-text d-flex justify-content-center">${comentario[comentarioRandom]}</p>
