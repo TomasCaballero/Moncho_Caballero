@@ -1,9 +1,10 @@
+// Traer productos almacenados en el STORAGE
 let elementosCarritos = JSON.parse(localStorage.getItem('listaArticulosSeleccionados'))
 
 
 let carritoOk = document.getElementsByClassName('carrito')[0];
 
-
+// Inyectar Productos almacenados
 const mostrarProductos = () =>{
     elementosCarritos.forEach((producto) => {
         const div = document.createElement('div')
@@ -16,16 +17,6 @@ const mostrarProductos = () =>{
             <td><button class="remove-btn">X</button></td>
         </tr>
         `
-
-
-
-
-        // div.innerHTML = `
-        // <img src="${producto.img}" alt="${producto.id}">
-        // <span id="nombre">${producto.articulo}</span>
-        // <div id="precio">$${producto.precio}</div>
-        // <button class="remove-btn">Eliminar</button>
-        // `
         carritoOk.appendChild(div)
     
     
@@ -46,7 +37,7 @@ const mostrarProductos = () =>{
         })
     })
 }
-if(elementosCarritos == null || elementosCarritos.length == 0){
+if(elementosCarritos == null || elementosCarritos.length == 0){ //Aviso por si el carrito esta vacio
     const div = document.createElement('div')
         div.classList.add('divCarritoVacio')
         div.innerHTML = `
@@ -57,7 +48,7 @@ if(elementosCarritos == null || elementosCarritos.length == 0){
     mostrarProductos()
 }
 
-
+//F(x) eliminar productos
 const eliminarProducto = (prod) => {
     let index = elementosCarritos.indexOf(prod)
     elementosCarritos.splice(index,1)

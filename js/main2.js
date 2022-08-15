@@ -1,3 +1,4 @@
+//------ARRAY DE ARTICULOS
 let stockRopa = [
     {id: 'item1', tipo: 'remera', articulo: 'Remera Blanca', precio: 1395, img: '../assets/img/remeras/remera1.jpg'},
     {id: 'item2', tipo: 'remera', articulo: 'Remera Gris', precio: 1175, img: '../assets/img/remeras/remera2.jpg'},
@@ -24,6 +25,8 @@ let stockRopa = [
 
 const contenedorRopa = document.querySelector('.contRem')
 
+
+//Inyectar Productos
 const cargarProductos = (productos) => {
     //vacio vista
     while( contenedorRopa.hasChildNodes() ){
